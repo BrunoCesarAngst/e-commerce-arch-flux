@@ -39,3 +39,82 @@ No package.json colamos isso
 comp:~/first-project-with-react$ yarn add commitizen -D
 comp:~/first-project-with-react$ yarn commitizen init cz-conventional-changelog --yarn --dev --exact
 ```
+
+## ESLint, Prettier & EditorConfig
+
+Com o [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) for VS Code instalado damos um Generation .editorconfig e editamos nesse arquivo as seguintes linhas:
+
+ end_of_line = lf,
+
+ trim_trailing_whitespace = true,
+
+ insert_final_newline = true
+
+ Vamos configurar o ESLint
+
+```bash
+comp:~/first-project-with-react$ yarn add eslint -D
+comp:~/first-project-with-react$ yarn eslint --init
+# Removemos o arquivo package-lock.json e rodamos yarn na raiz do projeto
+comp:~/first-project-with-react$ yarn
+# Damos continuação configurando o Prettier
+comp:~/first-project-with-react$ yarn add prettier eslint-config-prettier eslint-plugin-prettier babel-eslint -D
+#  Vamos para o arquivo .eslintrc.js e criamos o arquivo .prettierrc
+```
+
+```js
+// ~/first-project-with-react.js/.eslintrc.js
+module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+  },
+  extends: [
+    // 'plugin:react/recommended',
+    'airbnb',
+    // estendendo as configurações do
+    'prettier',
+    // e prettier para react
+    'prettier/react',
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  // Para informar que estamos usando as últimas configurações do babel
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  plugins: [
+    'react',
+    // incluindo o
+    'prettier',
+  ],
+  rules: {
+    // mostrar todos os erros
+    'prettier/prettier': 'error',
+    // para continuar a usar a extensão .js
+    'react/jsx-filename-extension': [
+      'warn',
+      { extensions: ['.jsx', '.js'] },
+    ],
+    // para poder usar export sem default
+    'import/prefer-default-export': 'off',
+  },
+};
+```
+
+```json
+// ~/first-project-with-react.js/.prettierrc.json
+{
+  // aspas simples
+  "singleQuote": true,
+  // virgula à direita
+  "trailingComma": "es5"
+}
+```

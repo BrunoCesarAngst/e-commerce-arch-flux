@@ -134,5 +134,23 @@ src
 │   └── Home
 │       └── index.js
 └── routes.js #configurar as rotas
-
 ```
+
+## Estilos globais
+
+```bash
+~/e-commerce-arch-flux$ yarn add styled-components
+src
+├── App.js
+├── index.js
+├── pages
+│   ├── Cart
+│   │   └── index.js
+│   └── Home
+│       └── index.js
+├── routes.js
+└── styles
+    └── global.js # trabalhamos nesse arquivo
+```
+
+vou usar a font [Roboto](https://fonts.google.com/specimen/Roboto) e colocar uma imagem de fundo

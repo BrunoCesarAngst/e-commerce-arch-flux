@@ -10,5 +10,5 @@ export default function Routes() {
       <Route path="/" exact component={Home} />
       <Route path="/cart" component={Cart} />
     </Switch>
-  )
+  );
 }

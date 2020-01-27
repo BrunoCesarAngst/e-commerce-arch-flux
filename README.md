@@ -118,3 +118,21 @@ module.exports = {
   "trailingComma": "es5"
 }
 ```
+
+## Configurando rotas
+
+```bash
+~/e-commerce-arch-flux$ yarn add react-router-dom
+
+src
+├── App.js # Header dentro do BrowserRouter, para para ter acesso a navegação e
+|          # ser clicável
+├── index.js
+├── pages
+│   ├── Cart
+│   │   └── index.js
+│   └── Home
+│       └── index.js
+└── routes.js #configurar as rotas
+
+```

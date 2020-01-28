@@ -213,5 +213,25 @@ src
 ## Estilização do Carrinho
 
 ```bash
-
+src
+├── App.js
+├── assets
+│   └── images
+│       ├── background.svg
+│       └── logo.svg
+├── components
+│   └── Header
+│       ├── index.js
+│       └── styles.js
+├── index.js
+├── pages
+│   ├── Cart # trabalhamos nesses arquivos
+│   │   ├── index.js
+│   │   └── styles.js
+│   └── Home
+│       ├── index.js
+│       └── styles.js
+├── routes.js
+└── styles
+    └── global.js
 ```

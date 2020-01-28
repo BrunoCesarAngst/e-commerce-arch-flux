@@ -209,3 +209,9 @@ src
 # para um hover que escurece o botão usando darken
 ~/e-commerce-arch-flux$ yarn add polished
 ```
+
+## Estilização do Carrinho
+
+```bash
+
+```

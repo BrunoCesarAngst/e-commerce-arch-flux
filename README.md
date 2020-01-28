@@ -181,3 +181,31 @@ src
 # vamos incluir um ícone no carrinho
 ~/e-commerce-arch-flux$ yarn add react-icons
 ```
+
+## Estilização da Home
+
+```bash
+src
+├── App.js
+├── assets
+│   └── images
+│       ├── background.svg
+│       └── logo.svg
+├── components
+│   └── Header
+│       ├── index.js
+│       └── styles.js
+├── index.js
+├── pages
+│   ├── Cart
+│   │   └── index.js
+│   └── Home
+│       ├── index.js
+│       └── styles.js # trabalhamos nesse arquivo
+├── routes.js
+└── styles
+    └── global.js
+
+# para um hover que escurece o botão usando darken
+~/e-commerce-arch-flux$ yarn add polished
+```

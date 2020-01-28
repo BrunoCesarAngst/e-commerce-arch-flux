@@ -154,3 +154,30 @@ src
 ```
 
 vou usar a font [Roboto](https://fonts.google.com/specimen/Roboto) e colocar uma imagem de fundo
+
+## Criando Header
+
+```bash
+src
+├── App.js
+├── assets
+│   └── images
+│       ├── background.svg
+│       └── logo.svg # para incluir o logo na página
+├── components # trabalhamos nesses arquivos
+│   └── Header
+│       ├── index.js
+│       └── styles.js
+├── index.js
+├── pages
+│   ├── Cart
+│   │   └── index.js
+│   └── Home
+│       └── index.js
+├── routes.js
+└── styles
+    └── global.js
+
+# vamos incluir um ícone no carrinho
+~/e-commerce-arch-flux$ yarn add react-icons
+```

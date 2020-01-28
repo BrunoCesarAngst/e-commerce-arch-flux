@@ -235,3 +235,16 @@ src
 └── styles
     └── global.js
 ```
+
+## Configurando API fake
+
+Vamos obter uma API REST fake completa com codificação zero através do [json-server](https://github.com/typicode/json-server)
+
+```bash
+~/e-commerce-arch-flux$ yarn global add json-server
+~/e-commerce-arch-flux$ yarn add axios
+# criamos a api e rodamos a api com esse comando!
+# damos um json-server passando o nome do arquivo com o nome da porta e o -w é
+# para quando temos alterações no arquivo e ele altera automático
+~/e-commerce-arch-flux$ json-server server.json -p 3333 -w
+```

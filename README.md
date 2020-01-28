@@ -242,9 +242,41 @@ Vamos obter uma API REST fake completa com codificação zero através do [json-
 
 ```bash
 ~/e-commerce-arch-flux$ yarn global add json-server
+
 ~/e-commerce-arch-flux$ yarn add axios
-# criamos a api e rodamos a api com esse comando!
+# criamos a api fake  e rodamos a api com esse comando!
 # damos um json-server passando o nome do arquivo com o nome da porta e o -w é
 # para quando temos alterações no arquivo e ele altera automático
+.
+├── commitlint.config.js
+├── package.json
+├── public
+│   └── index.html
+├── README.md
+├── server.json # o arquivo da api REST fake
+├── src
+│   ├── App.js
+│   ├── assets
+│   │   └── images
+│   │       ├── background.svg
+│   │       └── logo.svg
+│   ├── components
+│   │   └── Header
+│   │       ├── index.js
+│   │       └── styles.js
+│   ├── index.js
+│   ├── pages
+│   │   ├── Cart
+│   │   │   ├── index.js
+│   │   │   └── styles.js
+│   │   └── Home
+│   │       ├── index.js
+│   │       └── styles.js
+│   ├── routes.js
+│   ├── services
+│   │   └── api.js # acessando a api
+│   └── styles
+│       └── global.js
+└── yarn.lock
 ~/e-commerce-arch-flux$ json-server server.json -p 3333 -w
 ```

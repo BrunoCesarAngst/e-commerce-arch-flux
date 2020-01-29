@@ -280,3 +280,33 @@ Vamos obter uma API REST fake completa com codificação zero através do [json-
 └── yarn.lock
 ~/e-commerce-arch-flux$ json-server server.json -p 3333 -w
 ```
+
+## Buscando produtos da API
+
+Trabalhando a internacionalização da aplicação com pacote Intl do JS e falando de formatação, ter o cuidado para fazer formatações fora do render ou return de um componente.
+
+src
+├── App.js
+├── assets
+│   └── images
+│       ├── background.svg
+│       └── logo.svg
+├── components
+│   └── Header
+│       ├── index.js
+│       └── styles.js
+├── index.js
+├── pages
+│   ├── Cart
+│   │   ├── index.js
+│   │   └── styles.js
+│   └── Home
+│       ├── index.js
+│       └── styles.js
+├── routes.js
+├── services
+│   └── api.js
+├── styles
+│   └── global.js
+└── util
+    └── format.js # Trabalhando nesse arquivo

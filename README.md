@@ -285,6 +285,7 @@ Vamos obter uma API REST fake completa com codificação zero através do [json-
 
 Trabalhando a internacionalização da aplicação com pacote Intl do JS e falando de formatação, ter o cuidado para fazer formatações fora do render ou return de um componente.
 
+```bash
 src
 ├── App.js
 ├── assets
@@ -310,3 +311,42 @@ src
 │   └── global.js
 └── util
     └── format.js # Trabalhando nesse arquivo
+```
+
+## Configurando o Redux
+
+```bash
+~/e-commerce-arch-flux$ yarn add redux react-redux
+
+src
+├── App.js
+├── assets
+│   └── images
+│       ├── background.svg
+│       └── logo.svg
+├── components
+│   └── Header
+│       ├── index.js
+│       └── styles.js
+├── index.js
+├── pages
+│   ├── Cart
+│   │   ├── index.js
+│   │   └── styles.js
+│   └── Home
+│       ├── index.js
+│       └── styles.js
+├── routes.js
+├── services
+│   └── api.js
+├── store # configurando o redux
+│   ├── index.js # configuração inicial do redux
+│   └── modules # armazenando os vários tipos de dados no redux
+│       ├── cart
+│       │   └── reducer.js # aqui a função do reducer do carrinho
+│       └── rootReducer.js # armazenando todos os reducer da aplicação
+├── styles
+│   └── global.js
+└── util
+    └── format.js
+```

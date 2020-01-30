@@ -350,3 +350,13 @@ src
 └── util
     └── format.js
 ```
+
+## Adicionando ao carrinho
+
+passando o objeto do produto que foi clicado no botão ADICIONAR AO CARRINHO para o reducer do carrinho(cart), para ser acessível pelo resto da aplicação
+
+e sabendo que quando fazemos um dispatch de dentro de component do react todos os reducer da aplicação são ativados
+
+```bash
+
+```

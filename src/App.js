@@ -3,6 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 // deixa disponível o store da aplicação o estado global servindo essa informação para todos os componentes
 import { Provider } from 'react-redux';
 
+import './config/ReactotronConfig';
+
 import GlobalStyle from './styles/global';
 
 import Header from './components/Header';

@@ -353,10 +353,51 @@ src
 
 ## Adicionando ao carrinho
 
-passando o objeto do produto que foi clicado no botão ADICIONAR AO CARRINHO para o reducer do carrinho(cart), para ser acessível pelo resto da aplicação
+Passando o objeto do produto que foi clicado no botão ADICIONAR AO CARRINHO para o reducer do carrinho(cart), para ser acessível pelo resto da aplicação
 
-e sabendo que quando fazemos um dispatch de dentro de component do react todos os reducer da aplicação são ativados
+E sabendo que quando fazemos um dispatch de dentro de component do react todos os reducer da aplicação são ativados
+
+Então o nosso component dispara(dispatch) uma ação(action), a action avisa o reducer, o reducer faz as alterações e avisa todos os components que precisão dessa informação para fazer as atualizações.
+
+## Reactotron + Redux
 
 ```bash
+~/e-commerce-arch-flux$ yarn add reactotron-react-js reactotron-redux
 
+# para que reactotron tenha integração completa com o estado do redux
+# usaremos a seção state do reactotron e com dotNotation podemos visualizar as reducer e fazendo um snapshot do reutilizando o estado
+
+src
+├── App.js # importar o reactotron antes das importações de arquivos internos
+├── assets
+│   └── images
+│       ├── background.svg
+│       └── logo.svg
+├── components
+│   └── Header
+│       ├── index.js
+│       └── styles.js
+├── config
+│   └── ReactotronConfig.js # criamos esse arquivo de configuração
+├── index.js
+├── pages
+│   ├── Cart
+│   │   ├── index.js
+│   │   └── styles.js
+│   └── Home
+│       ├── index.js
+│       └── styles.js
+├── routes.js
+├── services
+│   └── api.js
+├── store
+│   ├── index.js # integrando a parte do redux com reactotron
+│   └── modules
+│       ├── cart
+│       │   └── reducer.js
+│       └── rootReducer.js
+├── styles
+│   └── global.js
+└── util
+    └── format.js
 ```

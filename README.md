@@ -416,6 +416,43 @@ Agora vamos crie a próxima árvore de estado imutável, modificando simplesment
 
 trabalhamos no index.js do e no reducer do cart
 
-```bash
+## Refatorando as actions
 
+Uma boa prática e separar as actions por módulo, exportando as ações
+
+```bash
+src
+├── App.js
+├── assets
+│   └── images
+│       ├── background.svg
+│       └── logo.svg
+├── components
+│   └── Header
+│       ├── index.js
+│       └── styles.js
+├── config
+│   └── ReactotronConfig.js
+├── index.js
+├── pages
+│   ├── Cart
+│   │   ├── index.js
+│   │   └── styles.js
+│   └── Home
+│       ├── index.js
+│       └── styles.js
+├── routes.js
+├── services
+│   └── api.js
+├── store
+│   ├── index.js
+│   └── modules
+│       ├── cart
+│       │   ├── actions.js
+│       │   └── reducer.js
+│       └── rootReducer.js
+├── styles
+│   └── global.js
+└── util
+    └── format.js
 ```

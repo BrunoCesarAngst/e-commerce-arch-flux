@@ -3,11 +3,17 @@ import React, { Component } from 'react';
 // conectando o component com o estado do redux
 import { connect } from 'react-redux';
 
+// ligar criadores de ação
+import { bindActionCreators } from 'redux';
+
 import { MdAddShoppingCart } from 'react-icons/md';
 
 import { formatPrice } from '../../util/format';
 
 import api from '../../services/api';
+
+// todas as actions de cart
+import * as CartActions from '../../store/modules/cart/actions';
 
 import { ProductList } from './styles';
 
@@ -30,14 +36,10 @@ class Home extends Component {
   // a função recebendo o produto
   handleAddProduct = product => {
     // pegando o disparador de actions para a redux
-    const { dispatch } = this.props;
+    const { addToCart } = this.props;
 
     //  o disparador contendo action
-    dispatch({
-      // toda action tem o type e passo o produto
-      type: 'ADD_TO_CART',
-      product,
-    });
+    addToCart(product);
   };
 
   render() {
@@ -69,5 +71,11 @@ class Home extends Component {
   }
 }
 
+// convertendo action do redux em props dentro do component
+const mapDispatchToProps = dispatch =>
+  // ligar criadores de ação
+  bindActionCreators(CartActions, dispatch);
+
 // connect retorna outra função que recebe a Home
-export default connect()(Home);
+// como connect não está recebendo o mapStateToProp como primeiro parâmetro, colocamos como null
+export default connect(null, mapDispatchToProps)(Home);

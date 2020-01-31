@@ -2,10 +2,10 @@ import produce from 'immer';
 
 // e sabendo que quando fazemos um dispatch de dentro de component do react todos os reducer da aplicação são ativados, o state é o estado anterior
 export default function cart(state = [], action) {
-  // para o reducer do cart só ouça a ação ADD_TO_CART
+  // para o reducer do cart só ouça a ação @cart/ADD
   switch (action.type) {
-    // quando type ADD_TO_CART for disparada
-    case 'ADD_TO_CART':
+    // quando type @cart/ADD for disparada
+    case '@cart/ADD':
       // pega todo o state e adiciona um novo produto
       return produce(state, draft => {
         const productIndex = draft.findIndex(p => p.id === action.product.id);
@@ -22,7 +22,7 @@ export default function cart(state = [], action) {
         }
       });
 
-    case 'REMOVE_FROM_CART':
+    case '@cart/REMOVE':
       return produce(state, draft => {
         const productIndex = draft.findIndex(p => p.id === action.id);
 

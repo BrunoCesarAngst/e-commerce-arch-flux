@@ -466,3 +466,7 @@ Lembrando que não e responsabilidade da interface da aplicação saber do estad
 ## Calculando totais
 
 primeiramente o subtotal e o melhor local para fazer isso é no mapDispatchToProps do index.js do cart
+
+## Exibindo as quantidades
+
+Adicionar na listagem de produtos, a quantidade de produto Adicionado no carrinho, aplicando outra técnica, refletindo as quantidades que um usuário tem de um produto dentro do carrinho aqui na listagem

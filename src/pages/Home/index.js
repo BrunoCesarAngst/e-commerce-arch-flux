@@ -45,6 +45,9 @@ class Home extends Component {
   render() {
     const { products } = this.state;
 
+    // essa propriedade vem do mapStateToProps
+    const { amount } = this.props;
+
     return (
       <ProductList>
         {products.map(product => (
@@ -59,7 +62,8 @@ class Home extends Component {
               onClick={() => this.handleAddProduct(product)}
             >
               <div>
-                <MdAddShoppingCart size={16} color="#FFF" /> 3
+                <MdAddShoppingCart size={16} color="#FFF" />
+                {amount[product.id] || 0}
               </div>
 
               <span>ADICIONAR AO CARRINHO</span>
@@ -71,6 +75,18 @@ class Home extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  // gerar uma informação fácil de ser acessada de quanto de um produto está no carrinho
+  // percorrendo o estado do carrinho recebendo o valor do amount, um objeto com id do produto e a quantidade que tem no carrinho
+  amount: state.cart.reduce((amount, product) => {
+    // criando um objeto com a chave de cada entrada do objeto e valor do amount
+    amount[product.id] = product.amount;
+
+    return amount;
+    // iniciando o amount com objeto vazio
+  }, {}),
+});
+
 // convertendo action do redux em props dentro do component
 const mapDispatchToProps = dispatch =>
   // ligar criadores de ação
@@ -78,4 +94,4 @@ const mapDispatchToProps = dispatch =>
 
 // connect retorna outra função que recebe a Home
 // como connect não está recebendo o mapStateToProp como primeiro parâmetro, colocamos como null
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

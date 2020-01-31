@@ -33,6 +33,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     // reactotron
     'no-console': ['error', { allow: ['tron'] }],
+    'no-param-reassign': 'off',
     'react/state-in-constructor': ['error', 'never'],
   },
 };

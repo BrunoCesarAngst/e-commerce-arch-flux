@@ -401,3 +401,13 @@ src
 └── util
     └── format.js
 ```
+
+## Listando no carrinho
+
+trabalhamos no index.js do cart
+
+Agora vamos crie a próxima árvore de estado imutável, modificando simplesmente a árvore atual com [immer](https://github.com/immerjs/immer) (alemão: para sempre) é um pacote minúsculo que permite trabalhar com o estado imutável de uma maneira mais conveniente. É baseado no mecanismo de cópia na gravação.
+
+```bash
+~/e-commerce-arch-flux$ yarn add immer
+```

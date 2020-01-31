@@ -10,12 +10,14 @@ import {
   MdDelete,
 } from 'react-icons/md';
 
+import { formatPrice } from '../../util/format';
+
 import * as CartActions from '../../store/modules/cart/actions';
 
 import { Container, ProductTable, Total } from './styles';
 
 // recebendo a propriedade cart
-function Cart({ cart, removeFromCart, updateAmount }) {
+function Cart({ cart, total, removeFromCart, updateAmount }) {
   function increment(product) {
     updateAmount(product.id, product.amount + 1);
   }
@@ -59,7 +61,7 @@ function Cart({ cart, removeFromCart, updateAmount }) {
                 </div>
               </td>
               <td>
-                <strong>R$240,00</strong>
+                <strong>{product.subtotal}</strong>
               </td>
               <td>
                 {/* removendo o produto */}
@@ -80,7 +82,7 @@ function Cart({ cart, removeFromCart, updateAmount }) {
 
         <Total>
           <span>TOTAL</span>
-          <strong>R$240,00</strong>
+          <strong>{total}</strong>
         </Total>
       </footer>
     </Container>
@@ -89,8 +91,20 @@ function Cart({ cart, removeFromCart, updateAmount }) {
 
 // pegando informações do state e mapeando para props pro component
 const mapStateToProps = state => ({
-  // cart recebe o state do reducer de cart
-  cart: state.cart,
+  // cart recebe o state do reducer de cart e com o map criando o subtotal
+  cart: state.cart.map(product => ({
+    // copiando todos os dados do product
+    ...product,
+    subtotal: formatPrice(product.price * product.amount),
+  })),
+  // criando a propriedade total pegando o array de valor reduzindo a um único valor
+  total: formatPrice(
+    // recebemos o valor total e cada produto
+    state.cart.reduce((total, product) => {
+      return total + product.price * product.amount;
+      // iniciando com zero
+    }, 0)
+  ),
 });
 
 const mapDispatchToProps = dispatch =>

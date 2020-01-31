@@ -462,3 +462,7 @@ src
 Trabalhamos no arquivo actions.js de cart criando essa action
 
 Lembrando que não e responsabilidade da interface da aplicação saber do estado e fazer verificações essa responsabilidade é redux ele é único ponto de verdade e responsável pelos dados de nossa aplicação
+
+## Calculando totais
+
+primeiramente o subtotal e o melhor local para fazer isso é no mapDispatchToProps do index.js do cart

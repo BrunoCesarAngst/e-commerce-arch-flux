@@ -411,3 +411,11 @@ Agora vamos crie a próxima árvore de estado imutável, modificando simplesment
 ```bash
 ~/e-commerce-arch-flux$ yarn add immer
 ```
+
+## Remover produto
+
+trabalhamos no index.js do e no reducer do cart
+
+```bash
+
+```

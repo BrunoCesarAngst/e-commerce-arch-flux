@@ -12,3 +12,12 @@ export function removeFromCart(id) {
     id,
   };
 }
+
+// modificando a propriedade amount do product
+export function updateAmount(id, amount) {
+  return {
+    type: '@cart/UPDATE_AMOUNT',
+    id,
+    amount,
+  };
+}

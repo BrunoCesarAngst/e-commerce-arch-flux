@@ -448,7 +448,7 @@ src
 │   ├── index.js
 │   └── modules
 │       ├── cart
-│       │   ├── actions.js
+│       │   ├── actions.js # criamos esse arquivo
 │       │   └── reducer.js
 │       └── rootReducer.js
 ├── styles
@@ -456,3 +456,9 @@ src
 └── util
     └── format.js
 ```
+
+## Alterando a quantidade
+
+Trabalhamos no arquivo actions.js de cart criando essa action
+
+Lembrando que não e responsabilidade da interface da aplicação saber do estado e fazer verificações essa responsabilidade é redux ele é único ponto de verdade e responsável pelos dados de nossa aplicação

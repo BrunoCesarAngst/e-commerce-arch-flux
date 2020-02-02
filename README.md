@@ -470,3 +470,49 @@ primeiramente o subtotal e o melhor local para fazer isso é no mapDispatchToPro
 ## Exibindo as quantidades
 
 Adicionar na listagem de produtos, a quantidade de produto Adicionado no carrinho, aplicando outra técnica, refletindo as quantidades que um usuário tem de um produto dentro do carrinho aqui na listagem
+
+## Configurando Redux Saga
+
+Middleware dentro do redux e para esse Middleware o redux Saga um interceptador de actions e quando dispara uma action um middleware pode entrar em ação dando algum efeito colateral(side effects) que pode ser async, chamada a api, banco de dados async storage, gerando um passo a mais entre a action e o reducer.
+
+Vamos usa-lo para colocar informações a extras quando o produto entra no carrinho
+
+```bash
+~/e-commerce-arch-flux$ yarn add redux-saga
+src
+├── App.js
+├── assets
+│   └── images
+│       ├── background.svg
+│       └── logo.svg
+├── components
+│   └── Header
+│       ├── index.js
+│       └── styles.js
+├── config
+│   └── ReactotronConfig.js
+├── index.js
+├── pages
+│   ├── Cart
+│   │   ├── index.js
+│   │   └── styles.js
+│   └── Home
+│       ├── index.js
+│       └── styles.js
+├── routes.js
+├── services
+│   └── api.js
+├── store
+│   ├── index.js
+│   └── modules
+│       ├── cart
+│       │   ├── actions.js
+│       │   ├── reducer.js
+│       │   └── sagas.js # primeiro criamos esse arquivo
+│       ├── rootReducer.js
+│       └── rootSaga.js # juntando todos os sagas
+├── styles
+│   └── global.js
+└── util
+    └── format.js
+```

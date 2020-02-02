@@ -33,13 +33,13 @@ class Home extends Component {
     this.setState({ products: data });
   }
 
-  // a função recebendo o produto
-  handleAddProduct = product => {
-    // pegando o disparador de actions para a redux
-    const { addToCart } = this.props;
+  // a função recebendo o id do produto
+  handleAddProduct = id => {
+    // pegando o disparador de actions para a saga
+    const { addToCartRequest } = this.props;
 
     //  o disparador contendo action
-    addToCart(product);
+    addToCartRequest(id);
   };
 
   render() {
@@ -59,7 +59,7 @@ class Home extends Component {
             <button
               type="button"
               // função passando todo o produto
-              onClick={() => this.handleAddProduct(product)}
+              onClick={() => this.handleAddProduct(product.id)}
             >
               <div>
                 <MdAddShoppingCart size={16} color="#FFF" />

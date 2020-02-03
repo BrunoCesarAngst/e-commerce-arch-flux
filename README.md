@@ -534,3 +534,11 @@ primeiramente addToCartSuccess em sagas.js do módulo cart no primeiro clique va
 ```bash
 ~/e-commerce-arch-flux$ yarn add reactotron-redux-saga
 ```
+
+## Estoque na adição
+
+Consultando o estoque; no arquivo sagas.js
+
+```bash
+
+```

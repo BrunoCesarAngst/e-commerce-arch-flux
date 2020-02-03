@@ -524,3 +524,13 @@ Dando mais informações do fluxo da aplicação instalando o plugin reactotron-
 ```bash
 ~/e-commerce-arch-flux$ yarn add reactotron-redux-saga
 ```
+
+## Separando actions
+
+Dividindo a função de adicionar ao carrinho em duas ações que vão ser ouvidas dentro do reducer.js
+
+primeiramente addToCartSuccess em sagas.js do módulo cart no primeiro clique vai apenas servir para adicionar o produto ao carrinho e quando for clicado novamente, não vai ser mais acessado a action @cart/ADD_SUCCESS que controla o estoque
+
+```bash
+~/e-commerce-arch-flux$ yarn add reactotron-redux-saga
+```

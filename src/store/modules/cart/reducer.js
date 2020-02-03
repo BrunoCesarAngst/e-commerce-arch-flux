@@ -6,20 +6,11 @@ export default function cart(state = [], action) {
   switch (action.type) {
     // quando type @cart/ADD_SUCCESS for disparada
     case '@cart/ADD_SUCCESS':
-      // pega todo o state e adiciona um novo produto
+      // pega todo o state e adiciona um novo produto ao carrinho
       return produce(state, draft => {
-        const productIndex = draft.findIndex(p => p.id === action.product.id);
+        const { product } = action;
 
-        // se existir
-        if (productIndex >= 0) {
-          // acrescenta um produto
-          draft[productIndex].amount += 1;
-        } else {
-          draft.push({
-            ...action.product,
-            amount: 1,
-          });
-        }
+        draft.push(product);
       });
 
     case '@cart/REMOVE':

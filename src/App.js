@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 // deixa disponível o store da aplicação o estado global servindo essa informação para todos os componentes
 import { Provider } from 'react-redux';
 
@@ -14,20 +14,24 @@ import Header from './components/Header';
 
 import Routes from './routes';
 
+// history
+import history from './services/history';
+
 import store from './store';
 
 function App() {
   return (
     // o Provider servindo o estado global para os components
     <Provider store={store}>
-      <BrowserRouter>
+      {/* o react-router-dom pasa a ouvir a nossa history */}
+      <Router history={history}>
         {/* para o Header ter acesso a parte de navegação, ser clicável */}
         <Header />
         <Routes />
         <GlobalStyle />
-        {/* incluindo o toastfy com tempo de abertura */}
+        {/* incluindo o toastify com tempo de abertura */}
         <ToastContainer autoClose={3000} />
-      </BrowserRouter>
+      </Router>
     </Provider>
   );
 }

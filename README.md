@@ -553,5 +553,54 @@ consultar o estoque quando apartamos o botão de aumentar ou diminuir
 
 Quando trabalhamos com Saga é bom dividir a action em duas uma função contendo a Request que vai ser ouvida pelo saga
 
+## Navegando no Saga
+
+Quando o usuário clicar no carrinho ele vai ser redirecionado ao carrinho
+
+Para aprender duas coisas muito importantes sobre o Redux-Saga e de navegação
+
+Essa navegação deve ser feita dentro do Saga e não pelo component
+
+para isso vamos configurar nossa navegação instalando o history uma biblioteca JS que controla history api das rotas do navegador que o react-react-router-dom usa
+
 ```bash
+~/e-commerce-arch-flux$ yarn add history
+# criamos o arquivo
+src
+├── App.js
+├── assets
+│   └── images
+│       ├── background.svg
+│       └── logo.svg
+├── components
+│   └── Header
+│       ├── index.js
+│       └── styles.js
+├── config
+│   └── ReactotronConfig.js
+├── index.js
+├── pages
+│   ├── Cart
+│   │   ├── index.js
+│   │   └── styles.js
+│   └── Home
+│       ├── index.js
+│       └── styles.js
+├── routes.js
+├── services
+│   ├── api.js
+│   └── history.js # Criando history
+├── store
+│   ├── index.js
+│   └── modules
+│       ├── cart
+│       │   ├── actions.js
+│       │   ├── reducer.js
+│       │   └── sagas.js
+│       ├── rootReducer.js
+│       └── rootSaga.js
+├── styles
+│   └── global.js
+└── util
+    └── format.js
 ```

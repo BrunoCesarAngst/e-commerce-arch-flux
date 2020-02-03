@@ -9,7 +9,7 @@ import api from '../../../services/api';
 
 import { formatPrice } from '../../../util/format';
 
-import { addToCartSuccess, updateAmount } from './actions';
+import { addToCartSuccess, updateAmountSuccess } from './actions';
 
 // function generator como se fosse um async que vai gerar um passo a mais entre a action e o reducer acessando a api buscando os detalhes do produto para cadastrar dentro do carrinho. recebendo o id do produto
 function* addToCart({ id }) {
@@ -39,7 +39,7 @@ function* addToCart({ id }) {
 
   if (productExists) {
     // disparando a action
-    yield put(updateAmount(id, amount));
+    yield put(updateAmountSuccess(id, amount));
   } else {
     // chamando a api o yield = await do saga para obter os dados do produto e vamos anotar essas informações no reducer
     const response = yield call(api.get, `/products/${id}`);
@@ -55,9 +55,28 @@ function* addToCart({ id }) {
   }
 }
 
+function* updateAmount({ id, amount }) {
+  // a quantidade do produto nao pode ser menor que 1
+  if (amount <= 0) return;
+
+  // buscando o produto
+  const stock = yield call(api.get, `/stock/${id}`);
+
+  // pegando a quantidade no estoque
+  const stockAmount = stock.data.amount;
+
+  if (amount > stockAmount) {
+    toast.error('Quantidade do produto fora do estoque');
+    return;
+  }
+
+  yield put(updateAmountSuccess(id, amount));
+}
+
 // ouvindo lister's
 
 export default all([
   // o primeiro parâmetro do takeLatest e qual ação do redux vai ser ouvida e depois qual função queremos disparar
   takeLatest('@cart/ADD_REQUEST', addToCart),
+  takeLatest('@cart/UPDATE_AMOUNT_REQUEST', updateAmount),
 ]);

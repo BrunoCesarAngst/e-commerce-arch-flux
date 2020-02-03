@@ -546,3 +546,12 @@ enviando uma mensagem amigável ao usuário
 ```bash
 ~/e-commerce-arch-flux$ yarn add react-toastify
 ```
+
+## Estoque na alteração
+
+consultar o estoque quando apartamos o botão de aumentar ou diminuir
+
+Quando trabalhamos com Saga é bom dividir a action em duas uma função contendo a Request que vai ser ouvida pelo saga
+
+```bash
+```

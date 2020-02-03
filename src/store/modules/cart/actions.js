@@ -21,10 +21,19 @@ export function removeFromCart(id) {
   };
 }
 
-// modificando a propriedade amount do product
-export function updateAmount(id, amount) {
+// modificando a propriedade amount do product que esta sendo ouvida pelo saga
+export function updateAmountRequest(id, amount) {
   return {
-    type: '@cart/UPDATE_AMOUNT',
+    type: '@cart/UPDATE_AMOUNT_REQUEST',
+    id,
+    amount,
+  };
+}
+
+// modificando a propriedade amount do product
+export function updateAmountSuccess(id, amount) {
+  return {
+    type: '@cart/UPDATE_AMOUNT_SUCCESS',
     id,
     amount,
   };

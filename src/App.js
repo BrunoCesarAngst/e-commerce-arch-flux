@@ -3,6 +3,9 @@ import { BrowserRouter } from 'react-router-dom';
 // deixa disponível o store da aplicação o estado global servindo essa informação para todos os componentes
 import { Provider } from 'react-redux';
 
+// para aplicar mensagens ao usuário
+import { ToastContainer } from 'react-toastify';
+
 import './config/ReactotronConfig';
 
 import GlobalStyle from './styles/global';
@@ -22,6 +25,8 @@ function App() {
         <Header />
         <Routes />
         <GlobalStyle />
+        {/* incluindo o toastfy com tempo de abertura */}
+        <ToastContainer autoClose={3000} />
       </BrowserRouter>
     </Provider>
   );

@@ -539,6 +539,10 @@ primeiramente addToCartSuccess em sagas.js do módulo cart no primeiro clique va
 
 Consultando o estoque; no arquivo sagas.js
 
-```bash
+## React Toastify
 
+enviando uma mensagem amigável ao usuário
+
+```bash
+~/e-commerce-arch-flux$ yarn add react-toastify
 ```

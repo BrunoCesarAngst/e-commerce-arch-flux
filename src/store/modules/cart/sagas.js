@@ -1,6 +1,9 @@
 //  o call é responsável por chamar métodos assíncronos e que retornam promises;put para disparar uma action; all cadastra lister's; o takeLatest paga o clique mais recente descartando os anteriores; o select busca informações dentro do estado
 import { call, put, all, takeLatest, select } from 'redux-saga/effects';
 
+// aplicando a mensagem do toastify
+import { toast } from 'react-toastify';
+
 // a api
 import api from '../../../services/api';
 
@@ -29,7 +32,8 @@ function* addToCart({ id }) {
 
   // se já foi consumido todo o estoque
   if (amount > stockAmount) {
-    console.tron.warn('ERRO');
+    // console.tron.warn('ERRO');
+    toast.error('Quantidade do produto fora do estoque');
     return;
   }
 

@@ -516,3 +516,11 @@ src
 └── util
     └── format.js
 ```
+
+## Reactotron + saga
+
+Dando mais informações do fluxo da aplicação instalando o plugin reactotron-redux-saga
+
+```bash
+~/e-commerce-arch-flux$ yarn add reactotron-redux-saga
+```

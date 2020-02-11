@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-
-import { bindActionCreators } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   MdRemoveCircleOutline,
@@ -17,13 +15,33 @@ import * as CartActions from '../../store/modules/cart/actions';
 import { Container, ProductTable, Total } from './styles';
 
 // recebendo a propriedade cart
-function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
+export default function Cart() {
+  const total = useSelector(state =>
+    formatPrice(
+      // recebemos o valor total e cada produto
+      state.cart.reduce((totalSum, product) => {
+        return totalSum + product.price * product.amount;
+        // iniciando com zero
+      }, 0)
+    )
+  );
+
+  const cart = useSelector(state =>
+    state.cart.map(product => ({
+      // copiando todos os dados do product
+      ...product,
+      subtotal: formatPrice(product.price * product.amount),
+    }))
+  );
+
+  const dispatch = useDispatch();
+
   function increment(product) {
-    updateAmountRequest(product.id, product.amount + 1);
+    dispatch(CartActions.updateAmountRequest(product.id, product.amount + 1));
   }
 
   function decrement(product) {
-    updateAmountRequest(product.id, product.amount - 1);
+    dispatch(CartActions.updateAmountRequest(product.id, product.amount - 1));
   }
 
   return (
@@ -67,7 +85,9 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
                 {/* removendo o produto */}
                 <button
                   type="button"
-                  onClick={() => removeFromCart(product.id)}
+                  onClick={() =>
+                    dispatch(CartActions.removeFromCart(product.id))
+                  }
                 >
                   <MdDelete size={20} color="#7159c1" />
                 </button>
@@ -88,26 +108,3 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
     </Container>
   );
 }
-
-// pegando informações do state e mapeando para props pro component
-const mapStateToProps = state => ({
-  // cart recebe o state do reducer de cart e com o map criando o subtotal
-  cart: state.cart.map(product => ({
-    // copiando todos os dados do product
-    ...product,
-    subtotal: formatPrice(product.price * product.amount),
-  })),
-  // criando a propriedade total pegando o array de valor reduzindo a um único valor
-  total: formatPrice(
-    // recebemos o valor total e cada produto
-    state.cart.reduce((total, product) => {
-      return total + product.price * product.amount;
-      // iniciando com zero
-    }, 0)
-  ),
-});
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(CartActions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);

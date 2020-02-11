@@ -23,6 +23,7 @@ module.exports = {
   plugins: [
     'react',
     'prettier',
+    'react-hooks'
   ],
   rules: {
     'prettier/prettier': 'error',
@@ -35,5 +36,11 @@ module.exports = {
     'no-console': ['error', { allow: ['tron'] }],
     'no-param-reassign': 'off',
     'react/state-in-constructor': ['error', 'never'],
+    'react/jsx-props-no-spreading': ['off'],
+    'no-param-reassign': [2, {'props': false}],
+    'react/prop-types': 0,
+    'jsx-a11y/control-has-associated-label':'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn'
   },
 };

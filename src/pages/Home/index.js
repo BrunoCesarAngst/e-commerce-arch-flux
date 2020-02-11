@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-// conectando o component com o estado do redux
-import { connect } from 'react-redux';
-
-// ligar criadores de ação
-import { bindActionCreators } from 'redux';
+// usando React hooks redux
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MdAddShoppingCart } from 'react-icons/md';
 
@@ -17,81 +14,66 @@ import * as CartActions from '../../store/modules/cart/actions';
 
 import { ProductList } from './styles';
 
-class Home extends Component {
-  state = {
-    products: [],
-  };
+export default function Home() {
+  const [products, setProducts] = useState([]);
+  const amount = useSelector(state =>
+    state.cart.reduce((SumAmount, product) => {
+      // criando um objeto com a chave de cada entrada do objeto e valor do amount
+      SumAmount[product.id] = product.amount;
 
-  async componentDidMount() {
-    const response = await api.get('products');
+      return SumAmount;
+      // iniciando o amount com objeto vazio
+    }, {})
+  );
 
-    const data = response.data.map(product => ({
-      ...product,
-      priceFormatted: formatPrice(product.price),
-    }));
+  const dispatch = useDispatch();
 
-    this.setState({ products: data });
-  }
+  useEffect(() => {
+    // para trabalhar com dados assíncronos criamos uma função chamando ela
+    // mesma aqui dentro
+    async function loadProducts() {
+      const response = await api.get('products');
+
+      const data = response.data.map(product => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }));
+
+      setProducts(data);
+    }
+
+    loadProducts();
+  }, []);
 
   // a função recebendo o id do produto
-  handleAddProduct = id => {
+  function handleAddProduct(id) {
     // pegando o disparador de actions para a saga
-    const { addToCartRequest } = this.props;
-
     //  o disparador contendo action
-    addToCartRequest(id);
-  };
-
-  render() {
-    const { products } = this.state;
-
-    // essa propriedade vem do mapStateToProps
-    const { amount } = this.props;
-
-    return (
-      <ProductList>
-        {products.map(product => (
-          <li key={product.id}>
-            <img src={product.image} alt={product.title} />
-            <strong>{product.title}</strong>
-            <span>{product.priceFormatted}</span>
-
-            <button
-              type="button"
-              // função passando todo o produto
-              onClick={() => this.handleAddProduct(product.id)}
-            >
-              <div>
-                <MdAddShoppingCart size={16} color="#FFF" />
-                {amount[product.id] || 0}
-              </div>
-
-              <span>ADICIONAR AO CARRINHO</span>
-            </button>
-          </li>
-        ))}
-      </ProductList>
-    );
+    dispatch(CartActions.addToCartRequest(id));
   }
+
+  return (
+    <ProductList>
+      {products.map(product => (
+        <li key={product.id}>
+          <img src={product.image} alt={product.title} />
+          <strong>{product.title}</strong>
+          <span>{product.priceFormatted}</span>
+
+          <button
+            type="button"
+            // função passando todo o produto
+            onClick={() => handleAddProduct(product.id)}
+          >
+            <div>
+              <MdAddShoppingCart size={16} color="#FFF" />
+              {amount[product.id] || 0}
+            </div>
+
+            <span>ADICIONAR AO CARRINHO</span>
+          </button>
+        </li>
+      ))}
+    </ProductList>
+  );
 }
-
-const mapStateToProps = state => ({
-  // gerar uma informação fácil de ser acessada de quanto de um produto está no carrinho
-  // percorrendo o estado do carrinho recebendo o valor do amount, um objeto com id do produto e a quantidade que tem no carrinho
-  amount: state.cart.reduce((amount, product) => {
-    // criando um objeto com a chave de cada entrada do objeto e valor do amount
-    amount[product.id] = product.amount;
-
-    return amount;
-    // iniciando o amount com objeto vazio
-  }, {}),
-});
-
-// convertendo action do redux em props dentro do component
-const mapDispatchToProps = dispatch =>
-  // ligar criadores de ação
-  bindActionCreators(CartActions, dispatch);
-
-// connect retorna outra função que recebe a Home
-// como connect não está recebendo o mapStateToProp como primeiro parâmetro, colocamos como null
-export default connect(mapStateToProps, mapDispatchToProps)(Home);

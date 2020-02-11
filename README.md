@@ -604,3 +604,18 @@ src
 └── util
     └── format.js
 ```
+
+## Usando React Hooks
+
+Substituindo componentes de class por funções
+
+```bash
+~/e-commerce-arch-flux$ yarn add eslint-plugin-react-hooks
+```
+
+Acrescentamos essas padrões ao eslintrc.js
+
+No plugin: 'react-hooks'
+
+E nas rules:
+'react-hooks/rules-of-hooks': 'error', 'react-hooks/exhaustive-deps': 'warn'

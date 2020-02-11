@@ -14,13 +14,14 @@ export default function cart(state = [], action) {
       });
 
     case '@cart/REMOVE':
-      return produce(state, draft => {
-        const productIndex = draft.findIndex(p => p.id === action.id);
+      return state.filter(p => p.id !== action.id);
+    // return produce(state, draft => {
+    //   const productIndex = draft.findIndex(p => p.id === action.id);
 
-        if (productIndex) {
-          draft.splice(productIndex, 1);
-        }
-      });
+    //   if (productIndex) {
+    //     draft.splice(productIndex, 1);
+    //   }
+    // });
 
     case '@cart/UPDATE_AMOUNT_SUCCESS': {
       return produce(state, draft => {
